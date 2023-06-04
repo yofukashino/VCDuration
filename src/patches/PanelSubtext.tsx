@@ -7,8 +7,10 @@ export const patchPanelSubtext = (): void => {
   const PanelSubtext = Object.values(RTCPanel).find((mod: Types.PanelSubtext) =>
     mod?.render?.toString()?.includes(".createHref("),
   ) as Types.PanelSubtext;
+
   PluginInjector.before(PanelSubtext, "render", (args) => {
     const [{ children }] = args;
+
     if (
       children?.props?.className !== RTCPanelClasses?.channel ||
       (Array.isArray(children?.props?.children) &&

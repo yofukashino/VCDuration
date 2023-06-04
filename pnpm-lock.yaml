@@ -1,9 +1,6 @@
 lockfileVersion: '6.0'
 
 devDependencies:
-  '@types/lodash':
-    specifier: ^4.14.191
-    version: 4.14.191
   '@types/node':
     specifier: ^18.11.2
     version: 18.14.1
@@ -28,15 +25,12 @@ devDependencies:
   eslint-plugin-react:
     specifier: ^7.31.10
     version: 7.32.2(eslint@8.34.0)
-  lodash:
-    specifier: ^4.17.21
-    version: 4.17.21
   prettier:
     specifier: ^2.8.1
     version: 2.8.4
   replugged:
-    specifier: ^4.2.6
-    version: 4.2.6(@codemirror/view@6.9.1)(@lezer/common@1.0.2)
+    specifier: ^4.3.0
+    version: 4.3.0(@codemirror/view@6.9.1)(@lezer/common@1.0.2)
   typescript:
     specifier: ^4.8.4
     version: 4.9.5
@@ -1423,10 +1417,6 @@ packages:
 
   /@types/json-schema@7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
-    dev: true
-
-  /@types/lodash@4.14.191:
-    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
     dev: true
 
   /@types/minimatch@5.1.2:
@@ -3234,10 +3224,6 @@ packages:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
 
-  /lodash@4.17.21:
-    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: true
-
   /loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
@@ -3700,8 +3686,8 @@ packages:
       rc: 1.2.8
     dev: true
 
-  /replugged@4.2.6(@codemirror/view@6.9.1)(@lezer/common@1.0.2):
-    resolution: {integrity: sha512-qMJJ/mcu5y84w2a7gRZff0iANuysH5fHqLHbaCbqn4jX4ElXAv34BgQyZGzxXOiMWmuEhZKHSI44R+mIwiWt+g==}
+  /replugged@4.3.0(@codemirror/view@6.9.1)(@lezer/common@1.0.2):
+    resolution: {integrity: sha512-Sa9O+hA5N2J7Cez2qegqW+HV8ekXxpXK1lZDCSXrp4slqHvBfUBVgySXrCvTXh2JQfl4JR6FfOf9SqfKabnb/Q==}
     engines: {node: '>=18.0.0', pnpm: '>=8.0.0'}
     hasBin: true
     dependencies:
@@ -3721,11 +3707,13 @@ packages:
       node-fetch: 3.3.0
       standalone-electron-types: 1.0.0
       update-notifier: 6.0.2
+      ws: 8.13.0
       yargs: 17.7.1
       zod: 3.20.6
     transitivePeerDependencies:
       - '@codemirror/view'
       - '@lezer/common'
+      - bufferutil
       - cssnano
       - encoding
       - postcss
@@ -3734,6 +3722,7 @@ packages:
       - srcset
       - terser
       - uncss
+      - utf-8-validate
     dev: true
 
   /require-directory@2.1.1:
@@ -4257,6 +4246,19 @@ packages:
       is-typedarray: 1.0.0
       signal-exit: 3.0.7
       typedarray-to-buffer: 3.1.5
+    dev: true
+
+  /ws@8.13.0:
+    resolution: {integrity: sha512-x9vcZYTrFPC7aSIbj7sRCYo7L/Xb8Iy+pW0ng0wt2vCJv7M9HOMy0UoN3rr+IFC7hb7vXoqS+P9ktyLLLhO+LA==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
     dev: true
 
   /xdg-basedir@5.1.0:
