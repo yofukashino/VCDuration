@@ -2,12 +2,14 @@
   "id": "dev.tharki.VCDuration",
   "name": "VCDuration",
   "description": "Shows how much time has passed since you joined a voice channel.",
+  "image": "https://tharki-god.github.io/files-random-host/bdpluginsassets/vctimer.gif",
+  "source": "https://github.com/Tharki-God/VCDuration",
   "author": {
     "name": "Ahlawat",
     "discordID": "1025214794766221384",
     "github": "Tharki-God"
   },
-  "version": "1.0.1",
+  "version": "1.0.2",
   "updater": {
     "type": "store",
     "id": "dev.tharki.VCDuration"
