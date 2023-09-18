@@ -12,7 +12,7 @@ Install Link:
 [![Install in Replugged](https://img.shields.io/badge/-Install%20in%20Replugged-blue?style=for-the-badge&logo=none)](https://replugged.dev/install?identifier=dev.tharki.VCDuration)
 
 
-![vctimer](https://i.imgur.com/l03yexO.gifv)
+![vctimer](https://i.imgur.com/l03yexO.gif)
 
 <sub>Inspired by a Better Discord plugin made by [QWERTxD](https://github.com/QWERTxD/BetterDiscordPlugins/tree/main/CallTimeCounter) and Powercord plugin made by [RazerMoon](https://github.com/RazerMoon/vcTimer/tree/main).</sub>
 
