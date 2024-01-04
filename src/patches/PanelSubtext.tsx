@@ -1,9 +1,9 @@
 import { PluginInjector } from "../index";
 import { RTCPanel, RTCPanelClasses } from "../lib/requiredModules";
 import Timer from "../Components/Timer";
-import * as Types from "../types";
+import Types from "../types";
 
-export const patchPanelSubtext = (): void => {
+export default (): void => {
   const PanelSubtext = Object.values(RTCPanel).find((mod: Types.PanelSubtext) =>
     mod?.render?.toString()?.includes(".createHref("),
   ) as Types.PanelSubtext;

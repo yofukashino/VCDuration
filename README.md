@@ -4,7 +4,7 @@ Shows how much time has passed since you joined a voice channel.
 
 Works for more than 24 hrs unlike old powercord and better discord versions.
 
-Direct Download Link: [dev.tharki.VCDuration.asar](https://github.com/Tharki-God/VCDuration/releases/latest/download/dev.tharki.VCDuration.asar)
+Direct Download Link: [dev.tharki.VCDuration.asar](https://github.com/TharkiDev/VCDuration/releases/latest/download/dev.tharki.VCDuration.asar)
 
 Install Link:
 

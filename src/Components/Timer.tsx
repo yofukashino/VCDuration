@@ -1,8 +1,10 @@
-import { common } from "replugged";
-import * as Utils from "../lib/utils";
-import * as Types from "../types";
-
-const { fluxDispatcher: FluxDispatcher, React, channels: UltimateChannelStore } = common;
+import {
+  fluxDispatcher as FluxDispatcher,
+  React,
+  channels as UltimateChannelStore,
+} from "replugged/common";
+import Utils from "../lib/utils";
+import Types from "../types";
 
 export default class Timer extends React.Component<{}, Types.TimerState> {
   constructor(props) {
@@ -81,12 +83,10 @@ export default class Timer extends React.Component<{}, Types.TimerState> {
   public render() {
     return (
       <div
-        {...{
-          key: "timer",
-          className: "vc-duration-timer",
-          style: {
-            paddingTop: "2.5px",
-          },
+        key="timer"
+        className="vc-duration-timer"
+        style={{
+          paddingTop: "2.5px",
         }}>
         Time elapsed: {Utils.convertToTimestamp(this.state.delta)}
       </div>
