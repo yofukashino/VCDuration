@@ -8,7 +8,7 @@ export default (): void => {
   PluginInjector.after(RTCPanel.prototype, "render", (_args, res: Types.ReactTree) => {
     const child = Utils.findInReactTree(
       res,
-      (c: Types.ReactTree) => c?.props?.className == RTCPanelClasses?.channel,
+      (c: Types.ReactTree) => c?.props?.className === RTCPanelClasses?.channel,
     ) as Types.ReactTree;
 
     if (

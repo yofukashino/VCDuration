@@ -45,5 +45,8 @@ export namespace Types {
     voiceId?: null | string;
     previousState?: TimerState;
   }
+  export interface Settings {
+    format: string;
+  }
 }
 export default Types;

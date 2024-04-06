@@ -3,6 +3,8 @@ import {
   React,
   channels as UltimateChannelStore,
 } from "replugged/common";
+import { SettingValues } from "../index";
+import { defaultSettings } from "../lib/consts";
 import Utils from "../lib/utils";
 import Types from "../types";
 
@@ -88,8 +90,19 @@ export default class Timer extends React.Component<{}, Types.TimerState> {
         style={{
           paddingTop: "2.5px",
         }}>
-        Time elapsed: {Utils.convertToTimestamp(this.state.delta)}
+        Time elapsed: {this.renderTimestamp()}
       </div>
     );
+  }
+  public renderTimestamp() {
+    switch (SettingValues.get("format", defaultSettings.format)) {
+      case "timestamp":
+        return Utils.convertToTimestamp(this.state.delta);
+      case "human":
+        return Utils.convertToHumanReadable(this.state.delta);
+      case "stopwatch":
+      default:
+        return Utils.convertToStopwatch(this.state.delta);
+    }
   }
 }
