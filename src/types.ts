@@ -1,11 +1,9 @@
 import { types } from "replugged";
+import { Tree } from "replugged/dist/renderer/util";
+
 export namespace Types {
   export import DefaultTypes = types;
-  export interface PanelSubtext {
-    $$typeof: symbol;
-    render: DefaultTypes.AnyFunction;
-  }
-  export type RTCPanel = Record<string, DefaultTypes.AnyFunction | PanelSubtext>;
+  export type ReactTree = Tree & React.ReactElement;
   export interface RTCPanelClasses {
     actionButtons: string;
     active: string;

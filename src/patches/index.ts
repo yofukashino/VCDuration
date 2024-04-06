@@ -1,6 +1,6 @@
-import patchPanelSubtext from "./PanelSubtext";
+import patchRTCPanel from "./RTCPanel";
 export const applyInjections = (): void => {
-  patchPanelSubtext();
+  patchRTCPanel();
 };
 
 export default { applyInjections };

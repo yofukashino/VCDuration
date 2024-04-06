@@ -3,11 +3,11 @@
   "name": "VCDuration",
   "description": "Shows how much time has passed since you joined a voice channel.",
   "image": "https://i.imgur.com/l03yexO.gif",
-  "source": "https://github.com/TharkiDev/VCDuration",
+  "source": "https://github.com/YofukashiNo/VCDuration",
   "author": {
-    "name": "Ahlawat",
+    "name": "Nanakusa",
     "discordID": "1121961711080050780",
-    "github": "TharkiDev"
+    "github": "YofukashiNo"
   },
   "version": "1.0.5",
   "updater": {

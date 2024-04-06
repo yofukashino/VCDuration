@@ -7,7 +7,7 @@ import Utils from "../lib/utils";
 import Types from "../types";
 
 export default class Timer extends React.Component<{}, Types.TimerState> {
-  constructor(props) {
+  public constructor(props) {
     super(props);
     this.handleRTCDispatch = this.handleRTCDispatch.bind(this);
     this.state = {
