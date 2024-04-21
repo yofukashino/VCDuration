@@ -1,14 +1,14 @@
 import { PluginInjector } from "../index";
-import { RTCPanel, RTCPanelClasses } from "../lib/requiredModules";
+import Modules from "../lib/requiredModules";
 import Timer from "../Components/Timer";
 import Utils from "../lib/utils";
 import Types from "../types";
 
 export default (): void => {
-  PluginInjector.after(RTCPanel.prototype, "render", (_args, res: Types.ReactTree) => {
+  PluginInjector.after(Modules.RTCPanel.prototype, "render", (_args, res: Types.ReactTree) => {
     const child = Utils.findInReactTree(
       res,
-      (c: Types.ReactTree) => c?.props?.className === RTCPanelClasses?.channel,
+      (c: Types.ReactTree) => c?.props?.className === Modules.RTCPanelClasses?.channel,
     ) as Types.ReactTree;
 
     if (

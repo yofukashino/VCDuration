@@ -1,9 +1,19 @@
 import { types } from "replugged";
+import { Store } from "replugged/dist/renderer/modules/common/flux";
 import { Tree } from "replugged/dist/renderer/util";
 
 export namespace Types {
   export import DefaultTypes = types;
   export type ReactTree = Tree & React.ReactElement;
+  export interface SelectedChannelStore extends Store {
+    getChannelId: DefaultTypes.AnyFunction;
+    getCurrentlySelectedChannelId: DefaultTypes.AnyFunction;
+    getLastChannelFollowingDestination: DefaultTypes.AnyFunction;
+    getLastSelectedChannelId: DefaultTypes.AnyFunction;
+    getLastSelectedChannels: DefaultTypes.AnyFunction;
+    getMostRecentSelectedTextChannelId: DefaultTypes.AnyFunction;
+    getVoiceChannelId: () => string;
+  }
   export interface RTCPanelClasses {
     actionButtons: string;
     active: string;
@@ -44,6 +54,12 @@ export namespace Types {
     delta: number;
     voiceId?: null | string;
     previousState?: TimerState;
+  }
+  export interface Modules {
+    loadModules?: () => Promise<void>;
+    SelectedChannelStore?: SelectedChannelStore;
+    RTCPanel?: DefaultTypes.AnyFunction;
+    RTCPanelClasses?: RTCPanelClasses;
   }
   export interface Settings {
     format: string;

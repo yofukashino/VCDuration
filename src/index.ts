@@ -6,7 +6,7 @@ export const PluginLogger = Logger.plugin("VCDuration");
 
 export const PluginInjector = new Injector();
 
-import Injections from "./patches/index";
+import Injections from "./injections/index";
 import Settings from "./Components/Settings";
 
 export const start = (): void => {

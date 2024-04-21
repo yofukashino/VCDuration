@@ -1,108 +1,42 @@
-import {
-  fluxDispatcher as FluxDispatcher,
-  React,
-  channels as UltimateChannelStore,
-} from "replugged/common";
+import { flux as Flux, React } from "replugged/common";
 import { SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
+import Modules from "../lib/requiredModules";
 import Utils from "../lib/utils";
-import Types from "../types";
 
-export default class Timer extends React.Component<{}, Types.TimerState> {
-  public constructor(props) {
-    super(props);
-    this.handleRTCDispatch = this.handleRTCDispatch.bind(this);
-    this.state = {
-      startTime: 0,
-      delta: 0,
-    };
-  }
-
-  public interval;
-
-  public previousTimeout;
-
-  public handleRTCDispatch(RTCConnectionState) {
-    if (
-      RTCConnectionState.state &&
-      RTCConnectionState.state === "RTC_DISCONNECTED" &&
-      !Object.hasOwnProperty.call(RTCConnectionState, "streamKey")
-    )
-      this.setState((prevState) => ({
-        startTime: Date.now(),
-        delta: prevState.delta,
-        voiceId: UltimateChannelStore.getVoiceChannelId(),
-      }));
-  }
-
-  public componentDidMount() {
-    if (this.state.voiceId) {
-      clearTimeout(this.previousTimeout);
-      this.setState((prevState) => prevState.previousState);
-    } else {
-      this.setState((prevState) => ({
-        startTime: Date.now(),
-        delta: prevState.delta,
-        voiceId: UltimateChannelStore.getVoiceChannelId(),
-      }));
-    }
-
-    FluxDispatcher.subscribe("RTC_CONNECTION_STATE", this.handleRTCDispatch);
-
-    this.interval = setInterval(() => {
-      this.setState((prevState) => ({
-        startTime: prevState.startTime,
-        delta: Math.round((Date.now() - prevState.startTime) / 1000) * 1000,
-        voiceId: UltimateChannelStore.getVoiceChannelId(),
-      }));
-    }, 1000);
-  }
-
-  public componentWillUnmount() {
-    FluxDispatcher.unsubscribe("RTC_CONNECTION_STATE", this.handleRTCDispatch);
-
-    clearInterval(this.interval);
-
-    this.setState((prevState) => ({
-      startTime: prevState.startTime,
-      delta: prevState.delta,
-      voiceId: prevState.voiceId,
-      previousState: {
-        startTime: prevState.startTime,
-        delta: prevState.delta,
-        voiceId: prevState.voiceId,
-      },
-    }));
-
-    this.previousTimeout = setTimeout(() => {
-      this.setState(() => ({
-        startTime: 0,
-        delta: 0,
-      }));
-    }, 5000);
-  }
-
-  public render() {
-    return (
-      <div
-        key="timer"
-        className="vc-duration-timer"
-        style={{
-          paddingTop: "2.5px",
-        }}>
-        Time elapsed: {this.renderTimestamp()}
-      </div>
+export default () => {
+  const [format, setFormat] = React.useState(SettingValues.get("format", defaultSettings.format));
+  const { currentChannelId } = Flux.useStateFromStores([Modules.SelectedChannelStore], () => ({
+    currentChannelId: Modules.SelectedChannelStore.getVoiceChannelId(),
+  }));
+  const [delta, setDelta] = React.useState(0);
+  const startTime = React.useMemo(() => Date.now(), [currentChannelId]);
+  React.useEffect(() => {
+    const intervalId = setInterval(
+      () => setDelta(Math.round((Date.now() - startTime) / 1000) * 1000),
+      1000,
     );
-  }
-  public renderTimestamp() {
-    switch (SettingValues.get("format", defaultSettings.format)) {
-      case "timestamp":
-        return Utils.convertToTimestamp(this.state.delta);
-      case "human":
-        return Utils.convertToHumanReadable(this.state.delta);
-      case "stopwatch":
-      default:
-        return Utils.convertToStopwatch(this.state.delta);
-    }
-  }
-}
+    return () => {
+      setDelta(0);
+      clearInterval(intervalId);
+    };
+  }, [currentChannelId]);
+  React.useEffect(() => {
+    setFormat(SettingValues.get("format", defaultSettings.format));
+  }, [SettingValues.get("format", defaultSettings.format)]);
+  return (
+    <div
+      key="timer"
+      className="vc-duration-timer"
+      style={{
+        paddingTop: "2.5px",
+      }}>
+      Time elapsed:
+      {format === "timestamp"
+        ? Utils.convertToTimestamp(delta)
+        : format === "human"
+        ? Utils.convertToHumanReadable(delta)
+        : Utils.convertToStopwatch(delta)}
+    </div>
+  );
+};
