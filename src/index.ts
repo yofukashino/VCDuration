@@ -11,7 +11,7 @@ import Settings from "./Components/Settings";
 
 export const start = (): void => {
   Settings.registerSettings();
-  Injections.applyInjections();
+  void Injections.applyInjections();
 };
 
 export const stop = (): void => {
