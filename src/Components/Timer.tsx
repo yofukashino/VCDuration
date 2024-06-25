@@ -1,4 +1,4 @@
-import { flux as Flux, React } from "replugged/common";
+import { fluxHooks as FluxHooks, React } from "replugged/common";
 import { SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
 import Modules from "../lib/requiredModules";
@@ -6,7 +6,7 @@ import Utils from "../lib/utils";
 
 export default () => {
   const [format, setFormat] = React.useState(SettingValues.get("format", defaultSettings.format));
-  const { currentChannelId } = Flux.useStateFromStores([Modules.SelectedChannelStore], () => ({
+  const { currentChannelId } = FluxHooks.useStateFromStores([Modules.SelectedChannelStore], () => ({
     currentChannelId: Modules.SelectedChannelStore.getVoiceChannelId(),
   }));
   const [delta, setDelta] = React.useState(0);

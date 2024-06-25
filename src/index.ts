@@ -3,15 +3,14 @@ import { defaultSettings } from "./lib/consts";
 
 export const SettingValues = await settings.init("dev.tharki.VCDuration", defaultSettings);
 export const PluginLogger = Logger.plugin("VCDuration");
-
 export const PluginInjector = new Injector();
 
-import Injections from "./injections/index";
 import Settings from "./Components/Settings";
+import Injections from "./injections/index";
 
 export const start = (): void => {
   Settings.registerSettings();
-  void Injections.applyInjections();
+  void Injections.applyInjections().catch((err) => PluginLogger.error(err));
 };
 
 export const stop = (): void => {
