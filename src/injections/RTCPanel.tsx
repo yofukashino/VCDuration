@@ -6,7 +6,6 @@ import Types from "../types";
 
 export default (): void => {
   PluginInjector.after(Modules.RTCPanel.prototype, "render", (_args, res: Types.ReactTree) => {
-    console.log(res);
     const child = Utils.findInReactTree(res, (c: Types.ReactTree) =>
       c?.props?.className?.includes(Modules.RTCPanelClasses?.channel),
     ) as Types.ReactTree;
