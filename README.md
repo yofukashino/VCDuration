@@ -6,7 +6,7 @@ Works for more than 24 hrs unlike old powercord and better discord versions.
 
 
 Direct Download Link: 
-[![dev.tharki.VCDuration.asar](https://img.shields.io/github/downloads/YofukashiNo/VCDuration/total.svg?style=social&label=Direct%20Download)](https://GitHub.com/YofukashiNo/VCDuration/releases/latest/download/dev.tharki.VCDuration.asar)
+[![dev.tharki.VCDuration.asar](https://img.shields.io/github/downloads/yofukashino/VCDuration/total.svg?style=social&label=Direct%20Download)](https://GitHub.com/yofukashino/VCDuration/releases/latest/download/dev.tharki.VCDuration.asar)
 
 
 Install Link:
@@ -37,17 +37,15 @@ Install Link:
 - Just make a pull request
 
 ### How Do I support without pull request?
-- You Can Donate on my [ko-fi](https://ko-fi.com/yofukashino) or UPI at `yofukashi.no.singh@fam`
-
-[![Buy Me a Coffee at ko-fi.com](https://storage.ko-fi.com/cdn/kofi3.png?v=3)](https://ko-fi.com/yofukashino)
+- You Can Donate on UPI at `yofukashinooo@oksbi` or Follow me on twitch [@yofukashino_](https://twitch.tv/yofukashino_)
 
 ### Where can I find other plugins by you?
 
-You can find them [here](https://github.com/YofukashiNo/RepluggedPlugins)
+You can find them [here](https://github.com/yofukashino/RepluggedPlugins)
 
 ### This plugin isn't listed in the all plugin list?
 
-PRs are appreciated or just make an issue on the [repo](https://github.com/YofukashiNo/RepluggedPlugins)
+PRs are appreciated or just make an issue on the [repo](https://github.com/yofukashino/RepluggedPlugins)
 
 
 ### Where can I find the support?

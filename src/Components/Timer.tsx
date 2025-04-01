@@ -30,6 +30,15 @@ export default () => {
       className="vc-duration-timer"
       style={{
         paddingTop: "2.5px",
+        color: "var(--text-secondary)",
+        fontFamily: "var(--font-primary)",
+        fontSize: "14px",
+        lineHeight: "1.2857142857142858",
+        fontWeight: "500",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
+        minWidth: "0",
       }}>
       Time elapsed:
       {format === "timestamp"
