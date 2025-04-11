@@ -11,8 +11,9 @@ export default (): void => {
     ) as Types.ReactTree;
 
     if (
-      Array.isArray(child?.props?.children) &&
-      child?.props?.children?.some((c) => c.props.key === "timer")
+      !child?.props?.children ||
+      (Array.isArray(child?.props?.children) &&
+        child?.props?.children?.some((c) => c.props.key === "timer"))
     )
       return res;
 
