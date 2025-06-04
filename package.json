@@ -1,6 +1,6 @@
 {
   "name": "vc-duration",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Shows how much time has passed since you joined a voice channel.",
   "engines": {
     "node": ">=14.0.0"
