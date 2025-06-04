@@ -40,7 +40,7 @@ export default () => {
         whiteSpace: "nowrap",
         minWidth: "0",
       }}>
-      Time elapsed:
+      Time elapsed -{" "}
       {format === "timestamp"
         ? Utils.convertToTimestamp(delta)
         : format === "human"
