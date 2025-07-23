@@ -58,7 +58,7 @@ export namespace Types {
   export interface Modules {
     loadModules?: () => Promise<void>;
     SelectedChannelStore?: SelectedChannelStore;
-    RTCPanel?: DefaultTypes.AnyFunction;
+    RTCPanel?: Record<string, DefaultTypes.AnyFunction>;
     RTCPanelClasses?: RTCPanelClasses;
   }
   export interface Settings {

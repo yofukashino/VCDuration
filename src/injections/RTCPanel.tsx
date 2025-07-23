@@ -3,9 +3,11 @@ import Modules from "../lib/requiredModules";
 import Timer from "../Components/Timer";
 import Utils from "../lib/utils";
 import Types from "../types";
+import { webpack } from "replugged";
 
 export default (): void => {
-  PluginInjector.after(Modules.RTCPanel.prototype, "render", (_args, res: Types.ReactTree) => {
+  const PanelRender = webpack.getFunctionKeyBySource(Modules.RTCPanel, "RTC_CONNECTED");
+  PluginInjector.after(Modules.RTCPanel, PanelRender, (_args, res: Types.ReactTree) => {
     const child = Utils.findInReactTree(res, (c: Types.ReactTree) =>
       c?.props?.className?.includes(Modules.RTCPanelClasses?.channel),
     ) as Types.ReactTree;
