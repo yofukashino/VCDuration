@@ -1,0 +1,13 @@
+div:has(> .VCDuration_rtcConnectionStatusWrapper)[class^="inner"],
+.VCDuration_rtcConnectionStatusWrapper > div {
+  height: 75px;
+}
+
+.vc-duration-timer {
+  margin-top: 1.5px;
+  margin-bottom: 2.5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}

@@ -28,11 +28,17 @@ export const convertToHumanReadable = (milliseconds: number): string => {
     .slice(11, 19)
     .split(":")
     .map((n) => Number(n));
-  return `${days ? (days > 1 ? `${days} Days ` : `${days} Day `) : ""}${
-    passedHrs ? (passedHrs > 1 ? `${passedHrs} Hrs ` : `${passedHrs} Hr `) : ""
-  }${passedMins ? (passedMins > 1 ? `${passedMins} Mins ` : `${passedMins} Min `) : ""}${
-    passedSecs > 1 ? `${passedSecs} Secs` : `${passedMins} Sec`
-  }`;
+
+  const printableDays = days ? (days > 1 ? `${days} Days ` : `${days} Day `) : "";
+  const printableHrs = passedHrs ? (passedHrs > 1 ? `${passedHrs} Hrs ` : `${passedHrs} Hr `) : "";
+  const printableMins = passedMins
+    ? passedMins > 1
+      ? `${passedMins} Mins `
+      : `${passedMins} Min `
+    : "";
+  const printableSecs = passedSecs > 1 ? `${passedSecs} Secs` : `${passedMins} Sec`;
+
+  return `${printableDays}${printableHrs}${printableMins}${printableSecs}`;
 };
 
 export default { ...util, convertToTimestamp, convertToStopwatch, convertToHumanReadable };

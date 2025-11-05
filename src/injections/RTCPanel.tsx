@@ -1,27 +1,28 @@
-import { PluginInjector } from "../index";
-import Modules from "../lib/requiredModules";
-import Timer from "../Components/Timer";
-import Utils from "../lib/utils";
-import Types from "../types";
-import { webpack } from "replugged";
+import { util, webpack } from "replugged";
+import { PluginInjector } from "@this";
+import { RTCPanel, RTCPanelClasses } from "@lib/RequiredModules";
+import Timer from "@components/Timer";
 
-export default (): void => {
-  const PanelRender = webpack.getFunctionKeyBySource(Modules.RTCPanel, "RTC_CONNECTED");
-  PluginInjector.after(Modules.RTCPanel, PanelRender, (_args, res: Types.ReactTree) => {
-    const child = Utils.findInReactTree(res, (c: Types.ReactTree) =>
-      c?.props?.className?.includes(Modules.RTCPanelClasses?.channel),
-    ) as Types.ReactTree;
+import type Types from "@Types";
+import { classNames } from "replugged/common";
 
-    if (
-      !child?.props?.children ||
-      (Array.isArray(child?.props?.children) &&
-        child?.props?.children?.some((c) => c.props.key === "timer"))
-    )
-      return res;
+const render = webpack.getFunctionKeyBySource(RTCPanel, "RTC_CONNECTED");
+PluginInjector.after(RTCPanel, render, (_args, res) => {
+  const child = util.findInReactTree(res, (c: Types.ReactTree) =>
+    c?.props?.className?.includes(RTCPanelClasses?.channel),
+  ) as Types.ReactTree;
 
-    child.props.children = Array.isArray(child?.props?.children)
-      ? [...Array.from(child?.props?.children), <Timer />]
-      : [child?.props?.children, <Timer />];
-    return res;
-  });
-};
+  const timerExists =
+    Array.isArray(child?.props?.children) &&
+    child?.props?.children?.some((c) => c.props.key === "timer");
+
+  if (!child?.props?.children || timerExists) return res;
+
+  child.props.children = Array.isArray(child?.props?.children)
+    ? [...Array.from(child?.props?.children), <Timer />]
+    : [child?.props?.children, <Timer />];
+
+  res.props.className = classNames(res.props.className, "VCDuration_rtcConnectionStatusWrapper");
+
+  return res;
+});

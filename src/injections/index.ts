@@ -1,8 +1,19 @@
-import Modules from "../lib/requiredModules";
-import injectRTCPanel from "./RTCPanel";
+import { PluginInjector, PluginLogger } from "@this";
+import Modules from "@lib/RequiredModules";
+
+const InjectionNames = ["RTCPanel.tsx"] as const;
+
 export const applyInjections = async (): Promise<void> => {
-  await Modules.loadModules();
-  injectRTCPanel();
+  try {
+    await Modules.loadModules();
+    await Promise.all(InjectionNames.map((name) => import(`./${name}`)));
+  } catch (err: unknown) {
+    PluginLogger.error(err);
+  }
 };
 
-export default { applyInjections };
+export const removeInjections = (): void => {
+  PluginInjector.uninjectAll();
+};
+
+export default { applyInjections, removeInjections };
