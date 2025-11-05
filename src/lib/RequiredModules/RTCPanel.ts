@@ -2,7 +2,7 @@ import { webpack } from "replugged";
 import type Types from "@Types";
 
 export type RTCPanel = Types.DefaultTypes.RawModule<
-  Record<string, (...args: unknown[]) => Types.ReactTree>
+  Record<string, (...args: unknown[]) => Types.ReactTree & { props: { className: string } }>
 >;
 
 export default await webpack

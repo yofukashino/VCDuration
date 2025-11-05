@@ -1,4 +1,4 @@
-import { fluxHooks, React } from "replugged/common";
+import { React, fluxHooks } from "replugged/common";
 import { SettingValues } from "@this";
 import { DefaultSettings } from "@consts";
 import { SelectedChannelStore } from "@lib/RequiredModules";
@@ -6,7 +6,7 @@ import Utils from "@Utils";
 
 import "./Timer.css";
 
-export default () => {
+export default (): React.ReactElement => {
   const format = SettingValues.useValue("format", DefaultSettings.format);
 
   const { currentChannelId } = fluxHooks.useStateFromStores([SelectedChannelStore], () => ({

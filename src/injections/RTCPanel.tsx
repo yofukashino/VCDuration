@@ -12,17 +12,20 @@ PluginInjector.after(RTCPanel, render, (_args, res) => {
     c?.props?.className?.includes(RTCPanelClasses?.channel),
   ) as Types.ReactTree;
 
-  const timerExists =
-    Array.isArray(child?.props?.children) &&
-    child?.props?.children?.some((c) => c.props.key === "timer");
+  const grandChild: React.ReactElement[] = child?.props?.children;
 
-  if (!child?.props?.children || timerExists) return res;
+  const timerExists = Array.isArray(grandChild) && grandChild?.some((c) => c.props.key === "timer");
 
-  child.props.children = Array.isArray(child?.props?.children)
-    ? [...Array.from(child?.props?.children), <Timer />]
-    : [child?.props?.children, <Timer />];
+  if (!grandChild || timerExists) return res;
 
-  res.props.className = classNames(res.props.className, "VCDuration_rtcConnectionStatusWrapper");
+  child.props.children = Array.isArray(grandChild)
+    ? [...Array.from(grandChild), <Timer key="timer" />]
+    : [grandChild, <Timer key="timer" />];
+
+  res.props.className = classNames(
+    res.props.className as string,
+    "VCDuration_rtcConnectionStatusWrapper",
+  );
 
   return res;
 });

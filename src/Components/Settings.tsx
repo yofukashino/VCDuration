@@ -15,7 +15,7 @@ export const registerSettings = (): void => {
   }
 };
 
-export const Settings = () => {
+export const Settings = (): React.ReactElement => {
   return (
     <>
       <Select
