@@ -1,43 +1,37 @@
 import { webpack } from "replugged";
 
-export interface RTCPanelClasses {
-  actionButtons: string;
-  active: string;
-  beta: string;
-  button: string;
-  buttonActive: string;
-  buttonColor: string;
-  buttonContents: string;
-  buttonDeveloperActivityShelf: string;
-  buttonIcon: string;
-  channel: string;
-  connection: string;
-  container: string;
-  customStatusContainer: string;
-  disabled: string;
-  fauxDisabled: string;
-  hotspot: string;
-  inner: string;
-  krispLink: string;
-  krispLogo: string;
-  micTestButton: string;
-  noiseCancellationPopout: string;
-  noiseCancellationTooltip: string;
-  statusWithPopout: string;
-  viewAsRolesWarning: string;
-  viewAsRolesWarningButton: string;
-  viewAsRolesWarningText: string;
-  voicePanelIntroductionButton: string;
-  voicePanelIntroductionHeader: string;
-  voicePanelIntroductionText: string;
-  voicePanelIntroductionWrapper: string;
-  voiceUsers: string;
-  withText: string;
-  wrapper: string;
-}
+export type RTCPanelClasses = Record<
+  | "container"
+  | "inner"
+  | "channel"
+  | "noiseCancellationPopout"
+  | "noiseCancellationTooltip"
+  | "krispLogo"
+  | "krispLink"
+  | "connection"
+  | "voiceUsers"
+  | "actionButtons"
+  | "button"
+  | "buttonColor"
+  | "greyButtonActive"
+  | "fauxDisabled"
+  | "buttonActive"
+  | "buttonContents"
+  | "buttonIcon"
+  | "withText"
+  | "voicePanelIntroductionHeader"
+  | "voicePanelIntroductionText"
+  | "voicePanelIntroductionWrapper"
+  | "wrapper"
+  | "viewAsRolesWarning"
+  | "viewAsRolesWarningText"
+  | "disabled"
+  | "voiceButtonsContainer",
+  string
+>;
 
 export default await webpack
-  .waitForProps<RTCPanelClasses>(["channel", "micTestButton", "voiceUsers"], {
+  .waitForProps<RTCPanelClasses>(["channel", "voiceButtonsContainer", "voiceUsers"], {
     timeout: 10000,
   })
   .catch(() => {
